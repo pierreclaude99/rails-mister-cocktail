@@ -11,3 +11,24 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+section#hero {
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    /* bottom, image */
+    url(singha.jpg);
+    background-position: center center;
+    background-size: cover;
+}
+
+h1{
+  font-family: 'Raleway', sans-serif;
+}
+
+.min-vh-50 {
+  min-height: 50vh;
+}
