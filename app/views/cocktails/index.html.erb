@@ -1,32 +1,15 @@
-<section id="hero" class="min-vh-50 d-flex align-items-center justify-content-center" >
-  <div class="container">
-    <div id="wrapped" class="text-center">
-      <h1 class="text-white text-center">Mr Pierre Cocktail</h1>
-      <h2 class="text-white text-center">Turn alcool into regret</h2>
-      <%= link_to "Create more regret", new_cocktail_path, :class => "btn btn-primary " %>
-    </div>
-  </div>
-</section>
+<h1>Mein cocktail</h1>
+<%= cl_image_tag("xs6nkowgd5cx5aumbhbe",
+      width: 400, height: 300, crop: :fill) %>
+<ul>
+  <% @cocktails.each do |cocktail| %>
+  <li>
+     <%= link_to "#{cocktail.name}", cocktail_path(cocktail) %>
+     <% if cocktail.photo.attached?  %>
+     <%= cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+     <% end  %>
+  </li>
+ <% end %>
+</ul>
 
-
-<section id="product" class="m-5">
-  <div class="container">
-    <div class="row">
-      <% @cocktails.each do |cocktail| %>
-
-          <div class="col-12 col-sm-6 col-lg-4 ">
-           <%= link_to cocktail_path(cocktail) do %>
-            <div class="card rounded m-2 box-shadow"  style="height: 200px;background-image: url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
-               <div class="card-body align-items-center d-flex justify-content-center rounded text-decoration-none">
-                <h3 class="card-title text-white text-decoration-none"> <%= cocktail.name %></h3>
-               </div>
-            </div>
-               <% end %>
-          </div>
-      <% end %>
-    </div>
-  </div>
-</section>
-
-
-
+<%= link_to "nouveau cocktail", new_cocktail_path() %>
